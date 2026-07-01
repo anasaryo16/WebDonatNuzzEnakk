@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donut Nuzz | Donat Fresh Setiap Hari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOAST ============ -->
+<div class="toast-wrapper" id="toastWrapper"></div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="dd-navbar">
+  <div class="container dd-navbar-inner">
+    <a class="dd-logo" href="#" data-page="home">
+      <span class="dd-logo-icon"><i class="fa-solid fa-circle-notch"></i></span>
+      <span class="dd-logo-text">Donut <strong>Nuzz</strong></span>
+    </a>
+    <div class="dd-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Cari donat favoritmu...">
+    </div>
+    <button class="dd-theme-toggle" id="themeToggle" title="Mode Gelap">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ MAIN CONTENT ============ -->
+<main class="dd-main">
+
+  <!-- ============ PAGE: HOME ============ -->
+  <section class="dd-page" id="page-home">
+
+    <!-- HERO BANNER -->
+    <header class="dd-hero">
+      <div class="container dd-hero-inner">
+        <div class="dd-hero-text">
+          <span class="dd-eyebrow">🍩 Bakery Lokal Pilihan</span>
+          <h1>Selamat Datang!</h1>
+          <p>Pesan donat kapan saja, dimana saja dengan aplikasi kami.</p>
+          <a href="#produk" class="btn dd-btn-primary">Lihat Menu <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="dd-hero-image">
+          <img src="foto/semuadonuts.jpg" alt="Donat segar Donut Nuzz">
+        </div>
+      </div>
+      <div class="dd-slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+      </div>
+    </header>
+
+    <!-- ============ SEKSI PROMO ============ -->
+    <div class="container dd-section-head">
+      <h2>Promo Spesial 🎉</h2>
+      <span class="dd-badge-new">Terbatas!</span>
+    </div>
+    <div class="container dd-promo-grid">
+
+      <!-- Promo 1 -->
+      <div class="dd-promo-card dd-promo-main">
+        <div class="dd-promo-content">
+          <span class="dd-promo-label">Flash Sale</span>
+          <h3>Diskon 30%<br>untuk semua<br>donat premium</h3>
+          <p>Berlaku hari ini sampai pukul 21.00 WIB</p>
+          <button class="btn dd-btn-primary" onclick="goToPage('home')">Klaim Sekarang</button>
+        </div>
+        <div class="dd-promo-deco">🍩</div>
+      </div>
+
+      <!-- Promo 2 -->
+      <div class="dd-promo-card dd-promo-secondary">
+        <span class="dd-promo-label">Buy 5 Get 1</span>
+        <h3>Beli 5 Gratis 1</h3>
+        <p>Berlaku untuk semua varian klasik</p>
+        <div class="dd-promo-deco-sm">🎁</div>
+      </div>
+
+      <!-- Promo 3 -->
+      <div class="dd-promo-card dd-promo-accent">
+        <span class="dd-promo-label">Gratis Ongkir</span>
+        <h3>Order di atas<br>Rp50.000</h3>
+        <p>Area Jakarta & sekitarnya</p>
+        <div class="dd-promo-deco-sm">🛵</div>
+      </div>
+
+      <!-- Promo 4 -->
+      <div class="dd-promo-card dd-promo-dark">
+        <span class="dd-promo-label">Member</span>
+        <h3>Poin Reward<br>2x Lipat</h3>
+        <p>Khusus pelanggan setia Donut Nuzz</p>
+        <div class="dd-promo-deco-sm">⭐</div>
+      </div>
+
+    </div>
+
+    <!-- SECTION VARIAN DONUT -->
+    <div class="container dd-section-head" id="produk">
+      <h2>Varian Donut</h2>
+      <a href="#" class="dd-kategori-link" id="categoryToggle">Kategori <i class="fa-solid fa-sliders"></i></a>
+    </div>
+
+    <!-- FILTER / SORT BAR -->
+    <div class="container dd-filter-bar" id="filterBar">
+      <div class="dd-chip-group" id="categoryChips">
+        <button class="dd-chip active" data-category="semua">Semua</button>
+        <button class="dd-chip" data-category="coklat">Coklat</button>
+        <button class="dd-chip" data-category="buah">Buah</button>
+        <button class="dd-chip" data-category="premium">Premium</button>
+        <button class="dd-chip" data-category="klasik">Klasik</button>
+      </div>
+      <select class="dd-sort" id="sortSelect">
+        <option value="default">Urutkan</option>
+        <option value="termurah">Harga Termurah</option>
+        <option value="termahal">Harga Termahal</option>
+        <option value="rating">Rating Tertinggi</option>
+      </select>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="container">
+      <div class="dd-product-grid" id="productGrid"></div>
+      <p class="dd-empty-state d-none" id="emptyState">Donat yang kamu cari tidak ditemukan. Coba kata kunci lain.</p>
+    </div>
+
+    <!-- ============ SEKSI TESTIMONI ============ -->
+    <div class="container dd-section-head">
+      <h2>Yang Mereka Katakan 💬</h2>
+    </div>
+    <div class="container dd-testimoni-grid">
+
+      <div class="dd-testimoni-card">
+        <div class="dd-testimoni-header">
+          <img src="foto/jokowimantap.png" alt="Mulyonno">
+          <div>
+            <h4>Mulyono</h4>
+            <div class="dd-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p>"Donatnya enak banget! Teksturnya empuk, glaze-nya pas nggak terlalu manis. Udah jadi langganan bapak tetap setiap minggu!"</p>
+        <span class="dd-testimoni-tag">Pembeli Terverifikasi</span>
+      </div>
+
+      <div class="dd-testimoni-card">
+        <div class="dd-testimoni-header">
+          <img src="foto/raffi ahmad.jpg" alt="Budi Santoso">
+          <div>
+            <h4>Raffi Ahmad</h4>
+            <div class="dd-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p>"Oreo Crunch-nya juara! Packaging rapi, pengiriman cepat. Aplikasinya juga gampang dipakai. Recommended banget buat oleh-oleh!"</p>
+        <span class="dd-testimoni-tag">Pembeli Terverifikasi</span>
+      </div>
+
+      <div class="dd-testimoni-card">
+        <div class="dd-testimoni-header">
+          <img src="foto/husen kiwil.jpeg" alt="Nadya Putri">
+          <div>
+            <h4>Husen kiwil</h4>
+            <div class="dd-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p>"Enak dan tidak terlalu manis, tidak merusak gigi"</p>
+        <span class="dd-testimoni-tag">Pembeli Terverifikasi</span>
+      </div>
+
+      <div class="dd-testimoni-card">
+        <div class="dd-testimoni-header">
+          <img src="foto/bahlil.jpg" alt="Eko Prasetyo">
+          <div>
+            <h4>Bahlil Lahdalia</h4>
+            <div class="dd-stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+        <p>"Rasa donatnya sangat enak, rasanya seperti ingin menaikkan harga BBM lagi ke 20K per liter"</p>
+        <span class="dd-testimoni-tag">Pembeli Terverifikasi</span>
+      </div>
+
+    </div>
+
+    <!-- ============ SEKSI UNDUH APLIKASI (CTA) ============ -->
+    <div class="dd-cta-section">
+      <div class="container dd-cta-inner">
+        <div class="dd-cta-text">
+          <span class="dd-eyebrow" style="background:rgba(255,255,255,0.25);color:#fff;">📱 Tersedia Gratis</span>
+          <h2>Unduh Aplikasi<br>Donut Nuzz Sekarang!</h2>
+          <p>Nikmati kemudahan pesan donat favorit kapan saja, dapatkan notifikasi promo eksklusif, dan kumpulkan poin reward setiap pembelian.</p>
+          <div class="dd-cta-stats">
+            <div class="dd-cta-stat"><strong>50K+</strong><span>Pengguna Aktif</span></div>
+            <div class="dd-cta-stat"><strong>4.9 ⭐</strong><span>Rating Toko</span></div>
+            <div class="dd-cta-stat"><strong>100+</strong><span>Varian Menu</span></div>
+          </div>
+          <div class="dd-cta-buttons">
+            <a href="#" class="dd-cta-btn dd-cta-playstore">
+              <i class="fa-brands fa-google-play"></i>
+              <div>
+                <span>Dapatkan di</span>
+                <strong>Google Play</strong>
+              </div>
+            </a>
+            <a href="#" class="dd-cta-btn dd-cta-appstore">
+              <i class="fa-brands fa-apple"></i>
+              <div>
+                <span>Download di</span>
+                <strong>App Store</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="dd-cta-visual">
+          <div class="dd-cta-phone">
+            <div class="dd-phone-screen">
+              <div class="dd-phone-top">
+                <span>🍩 Donut Nuzz</span>
+                <i class="fa-solid fa-bell"></i>
+              </div>
+              <div class="dd-phone-hero">Mau donat apa hari ini?</div>
+              <div class="dd-phone-cards">
+                <div class="dd-phone-card">🍫 Coklat Klasik</div>
+                <div class="dd-phone-card">🫐 Blueberry</div>
+                <div class="dd-phone-card">🍓 Berry</div>
+              </div>
+              <div class="dd-phone-promo">🎉 Promo hari ini: Diskon 30%!</div>
+            </div>
+          </div>
+          <div class="dd-cta-bubble dd-bubble-1">⭐ Rating 4.9</div>
+          <div class="dd-cta-bubble dd-bubble-2">🔔 Promo eksklusif!</div>
+          <div class="dd-cta-bubble dd-bubble-3">🚀 Pengiriman cepat</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ PAGE: PESANAN ============ -->
+  <section class="dd-page d-none" id="page-pesanan">
+    <div class="container dd-subpage">
+      <h2 class="dd-subpage-title"><i class="fa-solid fa-box"></i> Pesanan Saya</h2>
+      <div id="orderList" class="dd-order-list"></div>
+      <div class="dd-order-summary" id="orderSummary">
+        <div class="dd-summary-row"><span>Subtotal</span><span id="subtotalValue">Rp0</span></div>
+        <div class="dd-summary-row"><span>Biaya Layanan</span><span id="serviceValue">Rp0</span></div>
+        <div class="dd-summary-row dd-summary-total"><span>Total</span><span id="totalValue">Rp0</span></div>
+        <button class="btn dd-btn-primary w-100" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: PROFIL ============ -->
+  <section class="dd-page d-none" id="page-profil">
+    <div class="container dd-subpage">
+      <h2 class="dd-subpage-title"><i class="fa-solid fa-user"></i> Profil</h2>
+      <div class="dd-profile-card">
+        <img class="dd-profile-avatar" src="foto/anasfoto.jpeg" alt="Foto profil pengguna">
+        <h3>AnasnuzXDyrrot</h3>
+        <p class="dd-profile-email">anasaryo2016@email.com</p>
+      </div>
+      <ul class="dd-profile-list">
+        <li><i class="fa-solid fa-envelope"></i><div><span>Email</span><strong>anasaryo2016@email.com</strong></div></li>
+        <li><i class="fa-solid fa-phone"></i><div><span>Nomor HP</span><strong>+62-859-6088-5909</strong></div></li>
+        <li><i class="fa-solid fa-location-dot"></i><div><span>Alamat</span><strong>Jl. senopati  dalam 2, Jakarta Selatan</strong></div></li>
+        <li><i class="fa-solid fa-clock-rotate-left"></i><div><span>Riwayat Pesanan</span><strong>8 pesanan selesai</strong></div></li>
+      </ul>
+      <button class="btn dd-btn-outline w-100"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: LOKASI ============ -->
+  <section class="dd-page d-none" id="page-lokasi">
+    <div class="container dd-subpage">
+      <h2 class="dd-subpage-title"><i class="fa-solid fa-location-dot"></i> Lokasi Toko</h2>
+      <div class="dd-map-wrapper">
+        <iframe src="https://www.google.com/maps?q=Jakarta&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="dd-location-info">
+        <div class="dd-location-item">
+          <i class="fa-solid fa-shop"></i>
+          <div><span>Alamat</span><strong>Jl. senopati dalam 2, Jakarta Selatan, DKI Jakarta</strong></div>
+        </div>
+        <div class="dd-location-item">
+          <i class="fa-regular fa-clock"></i>
+          <div><span>Jam Operasional</span><strong>Setiap hari, 07.00 - 21.00 WIB</strong></div>
+        </div>
+        <div class="dd-location-item">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div><span>WhatsApp</span><strong>+62 859-6088-5909</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FLOATING CART ============ -->
+<button class="dd-floating-cart" id="floatingCart" data-page="pesanan">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span class="dd-cart-badge" id="cartBadge">0</span>
+</button>
+
+<div class="dd-loading-bar" id="loadingBar"></div>
+
+<!-- ============ BOTTOM NAVIGATION ============ -->
+<nav class="dd-bottom-nav">
+  <button class="dd-nav-item active" data-page="home"><i class="fa-solid fa-house"></i><span>Beranda</span></button>
+  <button class="dd-nav-item" data-page="pesanan"><i class="fa-solid fa-box"></i><span>Pesanan</span></button>
+  <button class="dd-nav-item" data-page="profil"><i class="fa-solid fa-user"></i><span>Profil</span></button>
+  <button class="dd-nav-item" data-page="lokasi"><i class="fa-solid fa-location-dot"></i><span>Lokasi</span></button>
+</nav>
+
+<!-- ============ FOOTER ============ -->
+<footer class="dd-footer">
+  <div class="container dd-footer-inner">
+    <div class="dd-footer-brand">
+      <span class="dd-logo-icon"><i class="fa-solid fa-circle-notch"></i></span>
+      <span>Donut Nuzz</span>
+    </div>
+    <div class="dd-footer-social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p class="dd-footer-copy">&copy; 2026 Donut Nuzz. Semua hak cipta dilindungi.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
